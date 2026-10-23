@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cybersecurity Portfolio · Detection Engineering</title>
+  <meta name="description" content="Cybersecurity learner focused on Linux detection engineering: Falco + Auditd fileless detection lab, academic security foundations, and a roadmap toward AI engineering.">
+  <meta name="theme-color" content="#17112b">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Cybersecurity Learner | Detection Engineering | Exploring AI Engineering">
+  <meta property="og:description" content="Building practical security skills through Linux labs, detection research, automation and data-driven experiments.">
+  <meta property="og:image" content="assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    document.documentElement.classList.add("js");
+    try { var t = localStorage.getItem("theme"); if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="#profile"><img src="assets/favicon.svg" alt="" width="24" height="24"><span>Portfolio</span></a>
+      <ul class="nav-links">
+        <li><a href="#quests">Projects</a></li>
+        <li><a href="#skill-tree">Skill Tree</a></li>
+        <li><a href="#inventory">Inventory</a></li>
+        <li><a href="#roadmap">Next Quests</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+        <span aria-hidden="true" class="theme-icon">☾</span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- A. HERO -->
+    <section id="profile" class="hero" aria-labelledby="hero-title">
+      <div class="hero-card panel">
+        <div class="avatar-frame">
+          <img class="avatar" src="assets/avatar.svg" alt="Pixel-art avatar of a hooded learner with lavender hair" width="160" height="160">
+          <span class="lvl-tag">LV. Student</span>
+        </div>
+        <div class="hero-text">
+          <p class="eyebrow">Player profile</p>
+          <h1 id="hero-title">
+            <span class="hero-name" data-field="name" hidden></span>
+            <span class="headline">Cybersecurity Learner <span class="sep">|</span> Detection Engineering <span class="sep">|</span> Exploring AI Engineering</span>
+          </h1>
+          <p class="lead">Building practical security skills through Linux labs, detection research, automation and data-driven experiments.</p>
+          <p>I learn best by measuring: I build isolated labs, run controlled tests, and report what worked and what did not, including false positives and limitations.</p>
+          <p class="meta" data-field="affiliation" hidden></p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#quests">Explore Projects</a>
+            <a class="btn" href="#skill-tree">My Learning Path</a>
+            <a class="btn" href="#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+
+      <aside class="status panel" aria-labelledby="status-title">
+        <h2 id="status-title" class="panel-title">Status</h2>
+        <dl class="status-list">
+          <div><dt>Cybersecurity</dt><dd><span class="chip chip-active">Main path</span></dd></div>
+          <div><dt>Detection Engineering</dt><dd><span class="chip chip-active">Active focus</span></dd></div>
+          <div><dt>AI Engineering</dt><dd><span class="chip chip-explore">Exploring</span></dd></div>
+        </dl>
+        <p class="status-note">Fueled by <span class="mono">syscalls</span>, <span class="mono">logs</span> and tea.</p>
+      </aside>
+    </section>
+
+    <!-- B. QUEST LOG -->
+    <section id="quests" class="section" aria-labelledby="quests-title">
+      <div class="section-head">
+        <p class="eyebrow">Quest log</p>
+        <h2 id="quests-title">Featured Project</h2>
+      </div>
+
+      <article class="quest panel" aria-labelledby="iam302-title">
+        <header class="quest-head">
+          <div>
+            <p class="quest-type">Course research lab · <span class="chip chip-done">Completed</span></p>
+            <h3 id="iam302-title">IAM302: Falco + Auditd Fileless Detection Lab</h3>
+          </div>
+        </header>
+        <p>How well do Falco's default rules, custom rules and Auditd detect and attribute <strong>fileless execution</strong> inside Docker containers, and at what cost in false positives and overhead?</p>
+
+        <ul class="tag-row" aria-label="Tools used">
+          <li>Ubuntu</li><li>Linux kernel</li><li>Docker</li><li>Falco modern eBPF</li><li>Auditd</li><li>Bash</li><li>Python</li>
+        </ul>
+
+        <div class="results" role="list">
+          <div class="result" role="listitem">
+            <p class="result-id">E1 · Detection matrix</p>
+            <p class="result-num">8/11 <small>direct</small></p>
+            <p class="result-note">Custom rules, by the report's counting. The 11 cases include technique variants and one case <em>blocked</em> by the runtime (noexec <span class="mono">/dev/shm</span>).</p>
+          </div>
+          <div class="result" role="listitem">
+            <p class="result-id">E4 · Held-out variants</p>
+            <p class="result-num">4/7 <small>·</small> 2/5</p>
+            <p class="result-note">4/7 on the original held-out set; 2/5 on the strict fileless subset. Small sample: no broad generalization claimed.</p>
+          </div>
+          <div class="result" role="listitem">
+            <p class="result-id">E2 · False positives</p>
+            <p class="result-num">2 <small>FP sources</small></p>
+            <p class="result-note">The custom Python inline-code rule fired on benign <span class="mono">python3 -c</span>; gcc/make builds triggered "Drop and execute new binary".</p>
+          </div>
+          <div class="result" role="listitem">
+            <p class="result-id">E5 · Overhead</p>
+            <p class="result-num">n=5 <small>inconclusive</small></p>
+            <p class="result-note">Runtime differences could not be separated from baseline variation at n=5.</p>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#case-study" data-open-case>Read Case Study</a>
+          <a class="btn" data-field="projectRepo" target="_blank" rel="noopener noreferrer" hidden>View Repository</a>
+        </div>
+
+        <details id="case-study" class="case">
+          <summary>Case study: Problem → Approach → Tools → Evidence → Limitations → Lessons</summary>
+          <div class="case-grid">
+            <section>
+              <h4><span class="step">1</span> Problem</h4>
+              <p>Fileless techniques (memfd, <span class="mono">/dev/shm</span>, <span class="mono">/proc/self/fd</span>, interpreter inline code, <span class="mono">curl | bash</span>, LD_PRELOAD, ptrace) run code without a normal on-disk binary. I wanted to know which ones runtime security tools see, and whether alerts point to the right technique.</p>
+            </section>
+            <section>
+              <h4><span class="step">2</span> Approach</h4>
+              <ul>
+                <li>Isolated Docker lab on an internal network, benign payloads only.</li>
+                <li>11 test cases × 5 repetitions, each classified as <strong>direct</strong>, <strong>misattrib</strong>, <strong>miss</strong> or <strong>blocked</strong>.</li>
+                <li>Default vs custom Falco rules; Auditd as a second telemetry source.</li>
+                <li>False-positive runs on benign workloads (container lifecycle, HTTP, container churn, builds, Python).</li>
+                <li>Held-out variants written after the custom rules were frozen.</li>
+                <li>Overhead measured against a no-monitoring baseline.</li>
+              </ul>
+            </section>
+            <section>
+              <h4><span class="step">3</span> Tools</h4>
+              <p>Ubuntu, Linux kernel, Docker, Falco (modern eBPF), Auditd. Bash automation for the test campaigns; Python parsers for Falco event JSON and audit logs, syscall analysis and log correlation.</p>
+            </section>
+            <section>
+              <h4><span class="step">4</span> Evidence</h4>
+              <ul>
+                <li><strong>E1:</strong> custom rules reached direct detection on 8/11 cases (denominator includes variants and one blocked case).</li>
+                <li><strong>E4:</strong> 4/7 on the original held-out set; 2/5 on the strict fileless subset.</li>
+                <li><strong>E2:</strong> the custom Python inline rule produced FPs on benign workloads; gcc/make builds triggered the default "Drop and execute new binary in container" rule.</li>
+                <li><strong>E5:</strong> runtime overhead not distinguishable from baseline variation at n=5.</li>
+              </ul>
+            </section>
+            <section>
+              <h4><span class="step">5</span> Limitations</h4>
+              <ul>
+                <li>Small samples (n=5 per cell); single VM and runtime version.</li>
+                <li>Variants and rules were written by the same person, so the held-out test is not blind.</li>
+                <li>Results describe this lab setup, not production environments.</li>
+              </ul>
+            </section>
+            <section>
+              <h4><span class="step">6</span> Lessons learned</h4>
+              <ul>
+                <li><strong>Blocked ≠ miss:</strong> check exit codes and audit results before blaming the detector.</li>
+                <li>Rule ordering matters: a default rule can shadow a custom rule and turn a detection into a misattribution.</li>
+                <li>Every new rule needs a benign-workload FP test.</li>
+                <li>Measure before claiming overhead, and say so when the data cannot tell.</li>
+                <li>Validate the pipeline itself: clock skew, locale and log rotation all corrupted data at some point.</li>
+              </ul>
+            </section>
+          </div>
+        </details>
+      </article>
+    </section>
+
+    <!-- C. SKILL TREE -->
+    <section id="skill-tree" class="section" aria-labelledby="tree-title">
+      <div class="section-head">
+        <p class="eyebrow">Academic skill tree</p>
+        <h2 id="tree-title">What I Studied</h2>
+        <ul class="legend" aria-label="Legend">
+          <li><span class="chip chip-studied">Studied</span> coursework completed</li>
+          <li><span class="chip chip-hands">Hands-on</span> applied in a project above</li>
+          <li><span class="chip chip-explore">Currently learning</span> self-study in progress</li>
+        </ul>
+      </div>
+
+      <div class="tree">
+        <div class="branch panel">
+          <h3 class="panel-title">Programming &amp; Systems</h3>
+          <ul class="nodes">
+            <li>Programming Fundamentals</li>
+            <li>Object-Oriented Programming</li>
+            <li>Data Structures &amp; Algorithms</li>
+            <li class="hands">Operating Systems <span class="chip chip-hands">Hands-on</span></li>
+            <li>Computer Organization</li>
+            <li>Database Systems</li>
+            <li>Computer Networking</li>
+            <li class="hands">Python Programming <span class="chip chip-hands">Hands-on</span></li>
+          </ul>
+        </div>
+        <div class="branch panel">
+          <h3 class="panel-title">Cybersecurity &amp; Forensics</h3>
+          <ul class="nodes">
+            <li>Intro to Information Assurance</li>
+            <li>Applied Cryptography</li>
+            <li>Malware Analysis &amp; Reverse Engineering</li>
+            <li>Digital Forensics</li>
+            <li>Ethical Hacking &amp; Offensive Security</li>
+            <li>Web Security</li>
+            <li>Network Forensics</li>
+            <li>Risk Management in Information Systems</li>
+            <li>Policy Development in Information Assurance</li>
+          </ul>
+        </div>
+        <div class="branch panel">
+          <h3 class="panel-title">Research &amp; Professional</h3>
+          <ul class="nodes">
+            <li class="hands">Statistics &amp; Probability <span class="chip chip-hands">Hands-on</span></li>
+            <li class="hands">Research Methods &amp; Academic Writing <span class="chip chip-hands">Hands-on</span></li>
+            <li>Ethics in IT</li>
+            <li>Academic Skills &amp; Communication</li>
+          </ul>
+          <h3 class="panel-title panel-title-sub">Currently learning</h3>
+          <ul class="nodes">
+            <li class="explore">AI Engineering <span class="chip chip-explore">Learning</span></li>
+            <li class="explore">ML fundamentals &amp; evaluation <span class="chip chip-explore">Learning</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footnote">All listed courses are <strong>studied</strong>; completing a course is not the same as professional proficiency. "Hands-on" marks only courses whose content I applied in the IAM302 lab (syscalls, Python parsers, interval estimates, the written report).</p>
+    </section>
+
+    <!-- D. INVENTORY -->
+    <section id="inventory" class="section" aria-labelledby="inv-title">
+      <div class="section-head">
+        <p class="eyebrow">Technical inventory</p>
+        <h2 id="inv-title">Skills</h2>
+      </div>
+      <div class="inventory">
+        <div class="slot panel">
+          <h3 class="panel-title"><span class="chip chip-hands">Hands-on</span></h3>
+          <ul class="items">
+            <li>Linux</li><li>Bash</li><li>Docker</li><li>Falco</li><li>Auditd</li><li>Log analysis</li><li>Python scripting</li>
+          </ul>
+          <p class="slot-note">Used within the scope of the projects shown on this page.</p>
+        </div>
+        <div class="slot panel">
+          <h3 class="panel-title"><span class="chip chip-studied">Academic foundation</span></h3>
+          <ul class="items">
+            <li>Networking</li><li>Operating systems</li><li>Databases</li><li>Cryptography</li><li>Digital forensics</li><li>Malware analysis</li>
+          </ul>
+          <p class="slot-note">Learned through coursework.</p>
+        </div>
+        <div class="slot panel">
+          <h3 class="panel-title"><span class="chip chip-explore">Currently exploring</span></h3>
+          <ul class="items">
+            <li>AI Engineering</li><li>AI-assisted security analytics</li><li>Data processing</li><li>Intelligent detection</li>
+          </ul>
+          <p class="slot-note">Early stage. No AI project claimed yet.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- E. ROADMAP -->
+    <section id="roadmap" class="section" aria-labelledby="road-title">
+      <div class="section-head">
+        <p class="eyebrow">Learning roadmap</p>
+        <h2 id="road-title">Next Quests</h2>
+        <p class="section-sub">Planned goals, not completed work.</p>
+      </div>
+      <ol class="roadmap">
+        <li class="panel"><span class="chip chip-next">Next quest</span><p>Deepen Linux detection engineering and audit telemetry.</p></li>
+        <li class="panel"><span class="chip chip-next">Next quest</span><p>Build a labeled dataset and an analysis pipeline for security events.</p></li>
+        <li class="panel"><span class="chip chip-next">Next quest</span><p>Learn ML fundamentals; evaluate models with precision, recall, F1 and false-positive rate.</p></li>
+        <li class="panel"><span class="chip chip-next">Next quest</span><p>Explore AI-assisted SOC triage and anomaly detection on safe data.</p></li>
+        <li class="panel"><span class="chip chip-next">Next quest</span><p>Ship one Cybersecurity × AI project with a public repository and a measured report.</p></li>
+      </ol>
+    </section>
+
+    <!-- F. CONTACT -->
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <div class="contact panel">
+        <p class="eyebrow">Start a conversation</p>
+        <h2 id="contact-title">Contact</h2>
+        <p>I'm open to internship and entry-level opportunities in technology consulting, cybersecurity and AI engineering. I'm also happy to talk about detection labs and learning paths.</p>
+        <ul class="contact-links">
+          <li><a class="btn" data-field="email" hidden>Email</a></li>
+          <li><a class="btn" data-field="linkedin" target="_blank" rel="noopener noreferrer" hidden>LinkedIn</a></li>
+          <li><a class="btn" data-field="github" target="_blank" rel="noopener noreferrer" hidden>GitHub</a></li>
+          <li><a class="btn" data-field="cv" target="_blank" rel="noopener noreferrer" hidden>Download CV</a></li>
+          <li><a class="btn" data-field="facebook" href="https://www.facebook.com/ntming24/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          <li><a class="btn" data-field="instagram" href="https://www.instagram.com/tnmingis/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Cute on the surface, serious about engineering underneath. <span class="mono">Static site · no trackers · no cookies</span></p>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
