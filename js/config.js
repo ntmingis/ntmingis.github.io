@@ -8,8 +8,8 @@
  */
 window.PROFILE = {
   name: "Nguyễn Tuấn Minh", // shown in the intro scene and the tab title
-  university: "",      // e.g. "FPT University"
-  major: "",           // e.g. "Information Assurance"
+  university: "",      // shown in the profile text already; set to also show the line
+  major: "",           // e.g. "Information Security"
   location: "",        // optional, e.g. "Ho Chi Minh City, Vietnam"
 
   email: "",           // professional email
@@ -18,6 +18,11 @@ window.PROFILE = {
   cv: "",              // "assets/cv.pdf" or an https:// link
 
   projectRepo: "",     // public repo for the IAM302 lab, if you ever publish one
+
+  // Only credentials you can verify. Each needs name, issuer and an https verifyUrl
+  // from the issuer (Credly, Coursera, Cisco NetAcad ...); the section stays hidden otherwise.
+  // { name: "", issuer: "", date: "2026-01", verifyUrl: "https://..." }
+  certifications: [],
 
   facebook: "https://www.facebook.com/ntming24/",
   instagram: "https://www.instagram.com/tnmingis/",

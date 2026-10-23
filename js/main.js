@@ -64,6 +64,27 @@
     affEl.hidden = false;
   }
 
+  // Certifications render only with a name, an issuer and an https verification link.
+  var certs = (Array.isArray(P.certifications) ? P.certifications : []).filter(function (c) {
+    return c && clean(c.name) && clean(c.issuer) && httpsUrl(c.verifyUrl);
+  });
+  var certBox = document.querySelector("[data-certs]");
+  var certList = document.querySelector("[data-cert-list]");
+  if (certBox && certList && certs.length) {
+    certs.forEach(function (c) {
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      a.href = httpsUrl(c.verifyUrl);
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.textContent = clean(c.name);
+      li.appendChild(a);
+      li.appendChild(document.createTextNode(" · " + clean(c.issuer) + (clean(c.date) ? " · " + clean(c.date) : "")));
+      certList.appendChild(li);
+    });
+    certBox.hidden = false;
+  }
+
   // "Read Case Study" opens the details panel before scrolling to it.
   var caseEl = document.getElementById("case-study");
   document.querySelectorAll("[data-open-case]").forEach(function (btn) {

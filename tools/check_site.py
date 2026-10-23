@@ -51,7 +51,7 @@ for href in p.blank:
 
 # The five public section anchors (https://ntmingis.github.io/portfolio-tm/#...) must exist,
 # and the quest menu must link exactly to them and start closed (hidden until clicked).
-SECTIONS = ["quests", "skill-tree", "inventory", "roadmap", "contact"]
+SECTIONS = ["inventory", "quests", "skill-tree", "roadmap", "contact"]
 for sid in SECTIONS:
     if sid not in p.ids:
         fails.append(f"missing section id #{sid}")
