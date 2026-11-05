@@ -79,7 +79,7 @@ if "default-src 'none'" not in csp or "'unsafe-inline'" in csp:
     fails.append("CSP meta missing or weakened")
 for item in p.inline:
     fails.append(f"CSP would block: {item}")
-for js in (ROOT / "js").glob("*.js"):
+for js in (ROOT / "js").rglob("*.js"):
     src = js.read_text(encoding="utf-8")
     if re.search(r"\.innerHTML\s*=|insertAdjacentHTML|document\.write|\beval\(|new Function", src):
         fails.append(f"{js.name}: HTML/code injection sink")
@@ -118,25 +118,33 @@ def ratio(a, b):
 dark = block(":root")
 light = {**dark, **block(':root[data-theme="light"]')}
 PAIRS = [("text", "bg"), ("text", "panel"), ("muted", "bg"), ("muted", "panel"), ("muted", "bg-2"),
-         ("accent", "bg"), ("accent", "panel"), ("accent", "bg-2"), ("accent-ink", "accent"),
+         ("accent", "bg"), ("accent", "panel"), ("accent", "bg-2"), ("accent-ink", "accent-strong"),
          ("verified", "panel"), ("course", "panel"), ("learning", "panel"), ("planned", "panel"),
-         ("risk", "panel")]
+         ("risk", "panel"), ("ember", "panel")]
 for theme, t in (("dark", dark), ("light", light)):
     worst = min((ratio(t[f], t[b]), f, b) for f, b in PAIRS)
     if worst[0] < 4.5:
         fails.append(f"contrast {theme}: {worst[1]} on {worst[2]} = {worst[0]:.2f}:1 < 4.5")
     print(f"contrast {theme}: worst {worst[1]} on {worst[2]} = {worst[0]:.2f}:1")
 # terminal window is always dark
-for fg in ("#cfe8d6", "#7d978a", "#4ade80", "#f2b950", "#ff7a85", "#67c8e6"):
-    if ratio(fg, "#070a08") < 4.5:
+for fg in ("#cfe8d6", "#7d978a", "#45c486", "#f2b950", "#ff7a85", "#67c8e6"):
+    if ratio(fg, "#070908") < 4.5:
         fails.append(f"terminal contrast {fg} < 4.5")
+# hero is always dark (#050505) whatever the page theme
+for fg in ("#ece7e1", "#b3ada6", "#e5596b", "#f5f0ea", "#45c486", "#8d8a85"):
+    if ratio(fg, "#050505") < 4.5:
+        fails.append(f"hero contrast {fg} < 4.5")
 # light tokens must also be duplicated identically in the prefers-color-scheme block
 media = re.search(r'@media \(prefers-color-scheme: light\)\s*\{\s*:root:not\(\[data-theme="dark"\]\)\s*\{([^}]*)\}', css)
 if not media or dict(re.findall(r"--([\w-]+):\s*(#[0-9a-fA-F]{6})", media.group(1))) != block(':root[data-theme="light"]'):
     fails.append("light theme tokens differ between [data-theme=light] and prefers-color-scheme block")
 
+for ref in re.findall(r'url\("?(\.\./[^")]+)"?\)', css):
+    if not (ROOT / "css" / ref).resolve().is_file():
+        fails.append(f"css references missing file {ref}")
+
 # 5. leaks / stale references
-for path in [ROOT / "index.html", *ROOT.glob("js/*.js"), *ROOT.glob("css/*.css")]:
+for path in [ROOT / "index.html", *ROOT.rglob("js/**/*.js"), *ROOT.glob("css/*.css")]:
     text = path.read_text(encoding="utf-8")
     if "portfolio-tm" in text:
         fails.append(f"{path.name}: stale reference to portfolio-tm")

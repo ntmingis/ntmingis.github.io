@@ -155,6 +155,7 @@
         [["commands:", "dim"]],
         "  whoami      who I am",
         "  ls          list sections",
+        "  about       about me",
         "  projects    the measured lab (opens it)",
         "  ai          AI security research plan",
         "  education   coursework",
@@ -171,7 +172,7 @@
       ]);
     },
     ls: function () {
-      print([[["tracks/  projects/  ai-security/  education/  contact/", "ok"]]]);
+      print([[["overview/  projects/  skills/  ai-security/  education/  about/  contact/", "ok"]]]);
     },
     projects: function () {
       print([
@@ -189,6 +190,10 @@
         [["no results claimed until there is evidence.", "dim"]]
       ]);
       jump("ai-track");
+    },
+    about: function () {
+      print(["Security student. Evidence first; AI security next."]);
+      jump("about");
     },
     education: function () {
       print(["FPT University · Information Security · courses marked Passed"]);
@@ -217,7 +222,7 @@
     exit: function () { print([[["there is no escape from the cyber world.", "dim"]]]); }
   };
   COMMANDS["cd"] = function (arg) {
-    var map = { tracks: "tracks", projects: "projects", "ai-security": "ai-track", ai: "ai-track", education: "education", contact: "contact", "~": "top" };
+    var map = { overview: "summary", summary: "summary", about: "about", skills: "tracks", tracks: "tracks", projects: "projects", "ai-security": "ai-track", ai: "ai-track", education: "education", contact: "contact", "~": "top" };
     var key = (arg || "~").replace(/\/$/, "");
     if (map[key]) jump(map[key]);
     else print([[["cd: no such directory: " + key, "err"]]]);
