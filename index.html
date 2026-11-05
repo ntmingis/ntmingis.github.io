@@ -3,346 +3,358 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nguyễn Tuấn Minh · Black Cat // Cyber World</title>
-  <meta name="description" content="Nguyễn Tuấn Minh, Information Security student at FPT University targeting IAM and cybersecurity engineering roles: Falco + auditd detection lab with measured results, and relevant coursework.">
-  <meta name="theme-color" content="#1b1433">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Nguyễn Tuấn Minh · Security Student → AI Security</title>
+  <meta name="description" content="Nguyễn Tuấn Minh, Information Security student at FPT University building toward AI Security: a measured Falco + auditd detection lab and a public research plan for LLM, RAG and agent security.">
+  <meta name="theme-color" content="#0b0f0d">
+  <link rel="canonical" href="https://ntmingis.github.io/">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://ntmingis.github.io/portfolio-tm/">
-  <meta property="og:title" content="Nguyễn Tuấn Minh · Information Security Student | IAM &amp; Cybersecurity Engineering">
-  <meta property="og:description" content="Curious by nature. Evidence-driven by design. Linux security labs, measured detection results and IAM-focused learning.">
-  <meta property="og:image" content="https://ntmingis.github.io/portfolio-tm/assets/og-image.png">
+  <meta property="og:url" content="https://ntmingis.github.io/">
+  <meta property="og:title" content="Nguyễn Tuấn Minh · Security Student → AI Security">
+  <meta property="og:description" content="Evidence first. A measured runtime-detection lab today; LLM, RAG and agent security labs next.">
+  <meta property="og:image" content="https://ntmingis.github.io/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preload" href="assets/fonts/vt323-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
-  <script>
-    (function () {
-      var d = document.documentElement;
-      d.classList.add("js");
-      try { var t = localStorage.getItem("theme"); if (t === "dark" || t === "light") d.setAttribute("data-theme", t); } catch (e) {}
-      // Play the intro only on a plain first visit: not for deep links (#quests …),
-      // not when reduced motion is requested, not twice in one browser session.
-      var play = !location.hash || location.hash === "#profile";
-      try { if (sessionStorage.getItem("introSeen")) play = false; } catch (e) {}
-      if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) play = false;
-      if (play) {
-        d.classList.add("intro-play");
-        // Failsafe: never leave the intro hidden if js/main.js fails to run.
-        setTimeout(function () { if (!window.__introStarted) d.classList.remove("intro-play"); }, 2500);
-      }
-    })();
-  </script>
+  <script src="js/theme-init.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- A. INTRO SCENE: BLACK CAT // CYBER WORLD -->
-  <section id="profile" class="intro" aria-labelledby="intro-name">
-    <div class="intro-controls">
-      <button type="button" class="ctl ctl-skip" data-skip>Skip Intro <span aria-hidden="true">▸▸</span></button>
-      <button type="button" class="ctl ctl-replay" data-replay hidden><span aria-hidden="true">↻</span> Replay intro</button>
-      <button type="button" class="ctl ctl-sound" data-sound aria-pressed="false" hidden><span aria-hidden="true" class="ctl-sound-icon">♪</span> Sound: <span data-sound-label>Off</span></button>
-    </div>
-
-    <div class="intro-text">
-      <p class="intro-kicker">Black Cat <span aria-hidden="true">//</span> Cyber World</p>
-      <h1 id="intro-name" class="intro-name" data-field="name">Nguyễn Tuấn Minh</h1>
-      <p class="intro-level"><span aria-hidden="true">▸</span> JUNIOR</p>
-      <p class="intro-headline">Information Security <span aria-hidden="true">·</span> IAM <span aria-hidden="true">·</span> Cybersecurity Engineering</p>
-      <p class="intro-sub">Curious by nature. Evidence-driven by design.</p>
-      <p class="intro-hello" lang="vi">Chào bạn, mình là Minh. <span lang="en">Welcome to my little cyber world.</span></p>
-    </div>
-
-    <div class="stage-wrap">
-      <div class="stage" role="img" aria-label="Pixel-art scene: a black cat typing on a retro computer at a desk, in a quiet room at night with the city lights outside the window.">
-        <img class="lyr lyr-bg" src="assets/scene/bg.png" alt="" width="192" height="108">
-        <div class="fx-sky" data-stars></div>
-        <div class="fx-moon"></div>
-        <img class="lyr lyr-desk" src="assets/scene/desk.png" alt="" width="192" height="108">
-        <div class="crt">
-          <div class="crt-screen"><pre class="term" data-term>cyber-world:~$ whoami
-&gt; minh // black cat
-&gt; class: sec learner
-&gt; mood : curious
-cyber-world:~$ explore<span class="cursor">_</span></pre></div>
-        </div>
-        <div class="fx-crt-light"></div>
-        <!-- opening moves: one drawn frame per pose, shown one at a time by js/intro.js -->
-        <div class="poses">
-          <img class="lyr pose pose-sit" src="assets/scene/cat-pose-sit.png" alt="" width="192" height="108">
-          <img class="lyr pose pose-stand" src="assets/scene/cat-pose-stand.png" alt="" width="192" height="108">
-          <img class="lyr pose pose-crouch" src="assets/scene/cat-pose-crouch.png" alt="" width="192" height="108">
-          <img class="lyr pose pose-leap" src="assets/scene/cat-pose-leap.png" alt="" width="192" height="108">
-          <img class="lyr pose pose-fall" src="assets/scene/cat-pose-fall.png" alt="" width="192" height="108">
-          <img class="lyr pose pose-land" src="assets/scene/cat-pose-land.png" alt="" width="192" height="108">
-          <img class="lyr pose pose-sitdown" src="assets/scene/cat-pose-sitdown.png" alt="" width="192" height="108">
-        </div>
-        <div class="cat">
-          <img class="lyr tail tail-a" src="assets/scene/cat-tail-a.png" alt="" width="192" height="108">
-          <img class="lyr tail tail-b" src="assets/scene/cat-tail-b.png" alt="" width="192" height="108">
-          <img class="lyr tail tail-c" src="assets/scene/cat-tail-c.png" alt="" width="192" height="108">
-          <img class="lyr" src="assets/scene/cat-body.png" alt="" width="192" height="108">
-          <img class="lyr paws paws-rest" src="assets/scene/cat-paws-rest.png" alt="" width="192" height="108">
-          <img class="lyr paws paws-a" src="assets/scene/cat-paws-a.png" alt="" width="192" height="108">
-          <img class="lyr paws paws-b" src="assets/scene/cat-paws-b.png" alt="" width="192" height="108">
-          <div class="head">
-            <img class="lyr" src="assets/scene/cat-head.png" alt="" width="192" height="108">
-            <img class="lyr ear ear-a" src="assets/scene/cat-ear-a.png" alt="" width="192" height="108">
-            <img class="lyr ear ear-b" src="assets/scene/cat-ear-b.png" alt="" width="192" height="108">
-            <img class="lyr blink" src="assets/scene/cat-blink.png" alt="" width="192" height="108">
-          </div>
-        </div>
-        <div class="fx-dust" data-dust></div>
-        <img class="lyr lyr-fg" src="assets/scene/fg.png" alt="" width="192" height="108">
-      </div>
-
-      <div class="prompt">
-        <button type="button" class="quest-btn" data-open-menu aria-haspopup="dialog" aria-controls="quest-menu" hidden>
-          <span aria-hidden="true">[</span> Bạn muốn biết gì về Minh? <span aria-hidden="true">]</span>
-        </button>
-        <p class="quest-sub">Select a quest to explore my world.</p>
-      </div>
-    </div>
-
-    <div class="boot" aria-hidden="true">
-      <div class="boot-pixels" data-boot-pixels></div>
-      <p class="boot-text">INITIALIZING PLAYER PROFILE<span class="boot-dots">...</span></p>
-      <div class="boot-bar"><span></span></div>
-    </div>
-  </section>
-
-  <!-- Quest menu: closed (and therefore hidden) until the button above is pressed. -->
-  <dialog id="quest-menu" class="hud" aria-labelledby="hud-title">
-    <div class="hud-frame">
-      <div class="hud-head">
-        <p class="hud-kicker">Quest select</p>
-        <h2 id="hud-title" class="hud-title">What would you like to know about me?</h2>
-        <button type="button" class="hud-close" data-close-menu aria-label="Close menu"><span aria-hidden="true">✕</span> <span class="hud-key">Esc</span></button>
-      </div>
-      <ul class="hud-list">
-        <li><a class="hud-item" href="#inventory"><img src="assets/icons/inventory.svg" alt="" width="32" height="32"><span class="hud-label">Skills</span><span class="hud-desc">IAM, Linux, monitoring, scripting</span><span class="hud-arrow" aria-hidden="true">▸</span></a></li>
-        <li><a class="hud-item" href="#quests"><img src="assets/icons/projects.svg" alt="" width="32" height="32"><span class="hud-label">Labs</span><span class="hud-desc">What I configured, tested and measured</span><span class="hud-arrow" aria-hidden="true">▸</span></a></li>
-        <li><a class="hud-item" href="#skill-tree"><img src="assets/icons/skill-tree.svg" alt="" width="32" height="32"><span class="hud-label">Education</span><span class="hud-desc">FPT University coursework</span><span class="hud-arrow" aria-hidden="true">▸</span></a></li>
-        <li><a class="hud-item" href="#roadmap"><img src="assets/icons/roadmap.svg" alt="" width="32" height="32"><span class="hud-label">Next Steps</span><span class="hud-desc">Planned IAM work</span><span class="hud-arrow" aria-hidden="true">▸</span></a></li>
-        <li><a class="hud-item" href="#contact"><img src="assets/icons/contact.svg" alt="" width="32" height="32"><span class="hud-label">Contact</span><span class="hud-desc">Open a communication channel</span><span class="hud-arrow" aria-hidden="true">▸</span></a></li>
-      </ul>
-      <p class="hud-hint" aria-hidden="true">↑ ↓ move · Enter select · Esc close</p>
-    </div>
-  </dialog>
-
   <header class="topbar">
     <nav class="nav" aria-label="Main">
-      <a class="brand" href="#profile"><img src="assets/favicon.svg" alt="" width="24" height="24"><span>Minh <span aria-hidden="true">//</span> Cyber World</span></a>
+      <a class="brand" href="#top"><span class="prompt-glyph" aria-hidden="true">&gt;_</span> ntmingis</a>
       <ul class="nav-links">
-        <li><a href="#inventory">Skills</a></li>
-        <li><a href="#quests">Labs</a></li>
-        <li><a href="#skill-tree">Education</a></li>
-        <li><a href="#roadmap">Next Steps</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#tracks">tracks</a></li>
+        <li><a href="#projects">projects</a></li>
+        <li><a href="#ai-track">ai-security</a></li>
+        <li><a href="#education">education</a></li>
+        <li><a href="#contact">contact</a></li>
       </ul>
-      <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
-        <span aria-hidden="true" class="theme-icon">☾</span>
+      <button class="theme-toggle" type="button" aria-label="Switch to light theme" data-theme-toggle>
+        <span aria-hidden="true" data-theme-icon>☀</span>
       </button>
     </nav>
   </header>
 
   <main id="main">
-    <!-- PROFILE -->
-    <section id="about" class="about" aria-labelledby="about-title">
-      <div class="about-text">
-        <p class="eyebrow">Player profile</p>
-        <h2 id="about-title">Nguyễn Tuấn Minh</h2>
-        <p class="about-headline">Information Security student <span class="sep">|</span> FPT University</p>
-        <p>I study Information Security at FPT University and learn by building isolated Linux labs, running controlled tests and reporting measured results, including false positives and limitations.</p>
-        <p>I am looking for internship or entry-level roles in Big4 technology consulting and cybersecurity engineering, with a focus on Identity and Access Management (IAM).</p>
-        <p class="meta" data-field="affiliation" hidden></p>
+    <!-- HERO: terminal window -->
+    <section id="top" class="hero" aria-labelledby="hero-name">
+      <div class="hero-text">
+        <p class="eyebrow">Information Security · FPT University · Year 3</p>
+        <h1 id="hero-name" class="hero-name" data-field="name" lang="vi">Nguyễn Tuấn Minh</h1>
+        <p class="hero-role">Security student building toward <strong>AI Security</strong>.</p>
+        <p class="hero-sub">I learn by building isolated labs, measuring what tools actually detect, and publishing the false positives and limits along with the wins.</p>
+        <p class="hero-hello" lang="vi">Chào bạn, mình là Minh.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#projects">View the lab</a>
+          <a class="btn" href="#ai-track">AI security plan</a>
+        </div>
       </div>
-      <div class="status">
-        <h3 class="status-title">Target roles</h3>
-        <dl class="status-list">
-          <div><dt>Identity &amp; Access Management</dt><dd><span class="chip chip-active">Primary target</span></dd></div>
-          <div><dt>Cybersecurity engineering</dt><dd><span class="chip chip-active">Target</span></dd></div>
-          <div><dt>Technology consulting</dt><dd><span class="chip chip-active">Big4</span></dd></div>
-        </dl>
-        <p class="status-note">Fueled by <span class="mono">syscalls</span>, <span class="mono">logs</span> and tea.</p>
+
+      <div class="term" data-term>
+        <div class="term-bar" aria-hidden="true">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="term-title">minh@cyberworld: ~</span>
+        </div>
+        <div class="term-body" data-term-body>
+          <div class="term-out" data-term-out aria-live="polite">
+<p><span class="ps1">minh@cyberworld:~$</span> whoami</p>
+<p><span lang="vi">Nguyễn Tuấn Minh</span>, Information Security student</p>
+<p><span class="ps1">minh@cyberworld:~$</span> cat focus.txt</p>
+<p>AI security: LLM, RAG and agent red teaming</p>
+<p>+ runtime detection engineering</p>
+<p><span class="ps1">minh@cyberworld:~$</span> cat status.txt</p>
+<p><span class="ok">[verified]</span> 1 detection lab, measured (Falco + auditd)</p>
+<p><span class="warn">[learning]</span> AI security, labs planned, no results claimed</p>
+<p class="term-hint">Type <kbd>help</kbd> for commands.</p>
+          </div>
+          <form class="term-in" data-term-form autocomplete="off" hidden>
+            <label for="term-input" class="ps1">minh@cyberworld:~$</label>
+            <input id="term-input" name="cmd" type="text" spellcheck="false" autocapitalize="off" aria-describedby="term-help" maxlength="40">
+          </form>
+          <p id="term-help" class="visually-hidden">Commands: help, whoami, projects, ai, education, contact, clear, theme.</p>
+        </div>
       </div>
     </section>
 
-    <!-- CORE SKILLS -->
-    <section id="inventory" class="section" aria-labelledby="inv-title">
+    <!-- TRACKS -->
+    <section id="tracks" class="section" aria-labelledby="tracks-title">
       <div class="section-head">
-        <p class="eyebrow">Technical inventory</p>
-        <h2 id="inv-title">Core Skills</h2>
+        <p class="eyebrow">$ ls ~/tracks</p>
+        <h2 id="tracks-title">Skill tracks</h2>
+        <p class="section-sub">Each item says how I know it. Only <span class="tag tag-verified">verified</span> means a documented lab with results.</p>
         <ul class="legend" aria-label="Legend">
-          <li><span class="chip chip-hands">Lab</span> used in the lab below</li>
-          <li><span class="chip chip-studied">Coursework</span> learned in passed courses</li>
+          <li><span class="tag tag-verified">verified</span> used in a documented lab</li>
+          <li><span class="tag tag-course">coursework</span> passed university course</li>
+          <li><span class="tag tag-learning">learning</span> studying, no lab result yet</li>
         </ul>
       </div>
-      <div class="inventory">
-        <div class="slot panel">
-          <h3 class="panel-title">IAM &amp; access control</h3>
+
+      <div class="grid tracks">
+        <article class="card card-focus">
+          <header class="card-head"><h3>AI security</h3><span class="tag tag-learning">learning</span></header>
+          <p class="card-lead">Primary direction.</p>
           <ul class="items">
-            <li>Linux users, groups</li><li>File permissions</li><li>sudo / least privilege</li><li>Audit attribution (auid)</li>
+            <li>Prompt injection: direct and indirect</li>
+            <li>RAG trust boundaries</li>
+            <li>Agent and MCP tool abuse, excessive agency</li>
+            <li>OWASP Top 10 for LLM Apps (2025), MITRE ATLAS</li>
           </ul>
-          <p class="slot-note"><span class="chip chip-hands">Lab</span> Applied while operating the lab. No dedicated IAM platform claimed.</p>
-        </div>
-        <div class="slot panel">
-          <h3 class="panel-title">Security monitoring</h3>
+          <p class="note">No AI-security results are claimed yet. The plan and success criteria are <a href="#ai-track">below</a>.</p>
+        </article>
+        <article class="card">
+          <header class="card-head"><h3>Detection engineering</h3><span class="tag tag-verified">verified</span></header>
           <ul class="items">
-            <li>Falco modern eBPF</li><li>Custom Falco rules</li><li>auditd</li><li>journald</li><li>Log correlation</li><li>FP testing</li>
+            <li>Falco modern eBPF, 6 custom rules</li>
+            <li>auditd syscall rules</li>
+            <li>False-positive testing on benign workloads</li>
+            <li>Log correlation (Falco JSON ↔ audit)</li>
           </ul>
-          <p class="slot-note"><span class="chip chip-hands">Lab</span> Default vs. 6 custom rules, measured.</p>
-        </div>
-        <div class="slot panel">
-          <h3 class="panel-title">Linux &amp; containers</h3>
+        </article>
+        <article class="card">
+          <header class="card-head"><h3>Linux &amp; containers</h3><span class="tag tag-verified">verified</span></header>
           <ul class="items">
-            <li>Ubuntu 22.04</li><li>Syscalls</li><li>systemd</li><li>Docker</li>
+            <li>Ubuntu 22.04, systemd, journald</li>
+            <li>Syscalls: execve, memfd_create, ptrace</li>
+            <li>Docker internal networks, egress tested</li>
+            <li>Least privilege, audit attribution (auid)</li>
           </ul>
-          <p class="slot-note"><span class="chip chip-hands">Lab</span></p>
-        </div>
-        <div class="slot panel">
-          <h3 class="panel-title">Networking</h3>
+        </article>
+        <article class="card">
+          <header class="card-head"><h3>Scripting</h3><span class="tag tag-verified">verified</span></header>
           <ul class="items">
-            <li>Docker internal network</li><li>Egress testing</li><li>TCP/IP</li><li>Network forensics</li>
+            <li>Bash test harness</li>
+            <li>Python log parsers</li>
+            <li>JSON processing</li>
           </ul>
-          <p class="slot-note"><span class="chip chip-hands">Lab</span> isolated network, Internet blocked and verified. <span class="chip chip-studied">Coursework</span> TCP/IP, forensics.</p>
-        </div>
-        <div class="slot panel">
-          <h3 class="panel-title">Scripting</h3>
+        </article>
+        <article class="card">
+          <header class="card-head"><h3>Offensive security</h3><span class="tag tag-course">coursework</span></header>
           <ul class="items">
-            <li>Bash</li><li>Python</li><li>JSON / log parsing</li><li>Test automation</li>
+            <li>Ethical hacking &amp; offensive security</li>
+            <li>Web security</li>
+            <li>Malware analysis &amp; reverse engineering</li>
           </ul>
-          <p class="slot-note"><span class="chip chip-hands">Lab</span> Test harness and parsers for Falco JSON and audit logs.</p>
-        </div>
-        <div class="slot panel">
-          <h3 class="panel-title">Security fundamentals</h3>
+        </article>
+        <article class="card">
+          <header class="card-head"><h3>Fundamentals</h3><span class="tag tag-course">coursework</span></header>
           <ul class="items">
-            <li>Cryptography</li><li>Risk management</li><li>Web security</li><li>Digital forensics</li><li>Malware analysis</li><li>Offensive security</li>
+            <li>Applied cryptography</li>
+            <li>Risk management</li>
+            <li>Digital &amp; network forensics</li>
           </ul>
-          <p class="slot-note"><span class="chip chip-studied">Coursework</span> Passed courses, listed under Education.</p>
-        </div>
+        </article>
       </div>
     </section>
 
-    <!-- LABS & PROJECTS -->
-    <section id="quests" class="section" aria-labelledby="quests-title">
+    <!-- PROJECTS -->
+    <section id="projects" class="section" aria-labelledby="projects-title">
       <div class="section-head">
-        <p class="eyebrow">Quest log</p>
-        <h2 id="quests-title">Labs &amp; Projects</h2>
+        <p class="eyebrow">$ cat ~/projects/*.md</p>
+        <h2 id="projects-title">Projects</h2>
       </div>
 
-      <article class="quest panel" aria-labelledby="lab-title">
-        <header class="quest-head">
-          <div>
-            <p class="quest-type">Course research lab (IAM302) · <span class="chip chip-done">Completed</span></p>
-            <h3 id="lab-title">Falco + auditd: Fileless Execution Detection in Docker</h3>
-          </div>
+      <article class="card project" aria-labelledby="lab-title">
+        <header class="project-head">
+          <p class="meta">IAM302 course research lab · <span class="tag tag-verified">completed</span></p>
+          <h3 id="lab-title">Falco + auditd: detecting fileless execution in Docker</h3>
         </header>
-        <p>I tested how well Falco default rules, my custom rules and auditd detect and attribute <strong>fileless execution</strong> inside Docker containers, and measured the cost in false positives and overhead.</p>
+        <p>I tested how well Falco's default rules, my own custom rules and auditd detect and correctly attribute <strong>fileless execution</strong> inside Docker containers, and what that costs in false positives and overhead.</p>
 
-        <ul class="tag-row" aria-label="Tools used">
+        <ul class="chips" aria-label="Tools used">
           <li>Ubuntu 22.04</li><li>Docker</li><li>Falco 0.45 modern eBPF</li><li>auditd</li><li>Bash</li><li>Python</li>
         </ul>
 
         <div class="results" role="list">
           <div class="result" role="listitem">
-            <p class="result-id">E1 · Detection</p>
+            <p class="result-id">E1 · detection</p>
             <p class="result-num">4 → 8 <small>of 11</small></p>
-            <p class="result-note">Direct detections, default → custom rules (5 runs each). One case was <em>blocked</em> by Docker's noexec <span class="mono">/dev/shm</span>, not missed.</p>
+            <p class="result-note">Direct detections, default → custom rules, 5 runs each. One case was <em>blocked</em> by Docker's noexec <code>/dev/shm</code>, not missed.</p>
           </div>
           <div class="result" role="listitem">
-            <p class="result-id">E4 · Unseen variants</p>
+            <p class="result-id">E4 · unseen variants</p>
             <p class="result-num">1 → 4 <small>of 7</small></p>
-            <p class="result-note">Variants written after the rules were frozen. Strict fileless subset: 0 → 2 of 5. Small sample.</p>
+            <p class="result-note">Written after the rules were frozen. Strict fileless subset: 0 → 2 of 5. Small sample.</p>
           </div>
           <div class="result" role="listitem">
-            <p class="result-id">E2 · False positives</p>
+            <p class="result-id">E2 · false positives</p>
             <p class="result-num">2 <small>FP sources</small></p>
-            <p class="result-note">My inline-code rule fired on benign <span class="mono">python3 -c</span>; gcc/make builds triggered a default rule.</p>
+            <p class="result-note">My inline-code rule fired on benign <code>python3 -c</code>; gcc/make builds triggered a default rule.</p>
           </div>
           <div class="result" role="listitem">
-            <p class="result-id">E5 · Overhead</p>
+            <p class="result-id">E5 · overhead</p>
             <p class="result-num">n=5 <small>inconclusive</small></p>
-            <p class="result-note">Differences stayed inside baseline variation, so no overhead figure is claimed.</p>
+            <p class="result-note">Differences stayed within baseline variation, so no overhead figure is claimed.</p>
           </div>
         </div>
 
-        <div class="iam-box">
-          <h4>IAM-relevant observations from this lab</h4>
-          <ul>
-            <li><strong>Accountability across privilege elevation:</strong> auditd logged a sudo command as <span class="mono">auid=minh uid=root</span>, so the root action stayed traceable to the logged-in user. Falco alerts also carry <span class="mono">user</span>, <span class="mono">uid</span> and <span class="mono">loginuid</span>.</li>
-            <li><strong>Least privilege in practice:</strong> parsing and analysis ran as an unprivileged user; audit logs were read through <span class="mono">adm</span> group membership; the Falco event file stayed root-only (0600); privileged steps were run explicitly with sudo.</li>
-          </ul>
-          <p class="slot-note">This is a detection lab, not a dedicated IAM lab.</p>
-        </div>
-
-        <div class="cta-row">
-          <a class="btn btn-primary" href="#case-study" data-open-case>Read Case Study</a>
-          <a class="btn" data-field="projectRepo" target="_blank" rel="noopener noreferrer" hidden>View Repository</a>
-        </div>
-
-        <details id="case-study" class="case">
-          <summary>Case study: Objective → Configuration → Test cases → Results → Takeaway</summary>
+        <details class="case">
+          <summary>Case study: objective → setup → tests → results → takeaways</summary>
           <div class="case-grid">
             <section>
-              <h4><span class="step">1</span> Objective</h4>
-              <p>Fileless techniques (memfd, <span class="mono">/dev/shm</span>, <span class="mono">/proc/self/fd</span>, interpreter inline code, <span class="mono">curl | bash</span>, LD_PRELOAD, ptrace) run code without a normal on-disk binary. Which ones do runtime tools see, and does the alert name the right technique?</p>
+              <h4><span class="step">01</span> Objective</h4>
+              <p>Fileless techniques (memfd, <code>/dev/shm</code>, <code>/proc/self/fd</code>, interpreter inline code, <code>curl | bash</code>, LD_PRELOAD, ptrace) run code without a normal on-disk binary. Which ones do runtime tools see, and does the alert name the right technique?</p>
             </section>
             <section>
-              <h4><span class="step">2</span> Tools / configuration</h4>
+              <h4><span class="step">02</span> Setup</h4>
               <ul>
-                <li>Ubuntu 22.04 VM, Docker containers on an <strong>internal</strong> network (Internet egress blocked and tested), benign payloads only.</li>
+                <li>Ubuntu 22.04 VM; containers on an <strong>internal</strong> Docker network, Internet egress blocked and tested; benign payloads only.</li>
                 <li>Falco 0.45.0 modern eBPF: 25 default rules, then 6 custom rules; rule updates frozen and config hashes recorded per run.</li>
-                <li>auditd rules on <span class="mono">memfd_create</span>, <span class="mono">execve</span>/<span class="mono">execveat</span> and <span class="mono">ptrace</span>.</li>
-                <li>Bash test harness; Python parsers for Falco JSON and audit logs.</li>
+                <li>auditd rules on <code>memfd_create</code>, <code>execve</code>/<code>execveat</code>, <code>ptrace</code>.</li>
+                <li>Bash harness; Python parsers for Falco JSON and audit logs.</li>
               </ul>
             </section>
             <section>
-              <h4><span class="step">3</span> Test cases</h4>
+              <h4><span class="step">03</span> Tests</h4>
               <ul>
                 <li>11 cases × 5 repetitions, each labelled <strong>direct</strong>, <strong>misattributed</strong>, <strong>missed</strong> or <strong>blocked</strong>.</li>
                 <li>7 unseen variants written after the custom rules were frozen.</li>
-                <li>Benign workloads for false positives: container lifecycle, HTTP, container churn, PostgreSQL, gcc/make builds, Python.</li>
-                <li>Overhead vs. a no-monitoring baseline.</li>
+                <li>Benign workloads for FP: container lifecycle, HTTP, churn, PostgreSQL, gcc/make, Python.</li>
+                <li>Overhead against a no-monitoring baseline.</li>
               </ul>
             </section>
             <section>
-              <h4><span class="step">4</span> Results</h4>
+              <h4><span class="step">04</span> Results</h4>
               <ul>
-                <li><strong>E1:</strong> direct detection on 4/11 cases with default rules and 8/11 with custom rules (the 11 include variants, one host-side case and one blocked case). In the default-rules run, auditd recorded specific telemetry for every successful payload.</li>
-                <li><strong>E4:</strong> 1/7 → 4/7 unseen variants; renaming the process (<span class="mono">exec -a</span>) or feeding code via stdin still evaded both rule sets.</li>
-                <li><strong>E2:</strong> 2 false-positive sources (my Python inline rule; default "Drop and execute new binary" on builds).</li>
+                <li><strong>E1:</strong> 4/11 direct with default rules, 8/11 with custom rules (the 11 include variants, one host-side and one blocked case). In the default-rules run, auditd recorded specific telemetry for every successful payload.</li>
+                <li><strong>E4:</strong> 1/7 → 4/7; process renaming (<code>exec -a</code>) and code via stdin still evaded both rule sets.</li>
+                <li><strong>E2:</strong> 2 FP sources (my Python inline rule; default "Drop and execute new binary" on builds).</li>
                 <li><strong>E5:</strong> overhead not distinguishable from baseline at n=5.</li>
               </ul>
             </section>
             <section>
-              <h4><span class="step">5</span> Security takeaway</h4>
+              <h4><span class="step">05</span> Takeaways</h4>
               <ul>
-                <li><strong>Blocked ≠ missed:</strong> check exit codes and audit results before blaming the detector.</li>
+                <li><strong>Blocked ≠ missed:</strong> check exit codes and audit records before blaming the detector.</li>
                 <li>Rule ordering matters: a default rule can shadow a custom one and turn a detection into a misattribution.</li>
-                <li>Rules that match on process name or argv are easy to evade; every new rule also needs a benign-workload FP test.</li>
-                <li>Limits: small samples, one VM, and I wrote both the variants and the rules, so the unseen test is not blind.</li>
+                <li>Rules matching on process name or argv are easy to evade; every new rule needs a benign-workload FP test.</li>
+                <li>Accountability survived privilege elevation: auditd logged <code>auid=minh uid=root</code> for sudo actions.</li>
+              </ul>
+            </section>
+            <section>
+              <h4><span class="step">06</span> Limits</h4>
+              <ul>
+                <li>Small samples and a single VM.</li>
+                <li>I wrote both the variants and the rules, so the "unseen" test is not blind.</li>
+                <li>Overhead result is inconclusive, not "zero overhead".</li>
               </ul>
             </section>
           </div>
         </details>
+
+        <aside class="bridge">
+          <p class="bridge-label">Bridge to AI security <span class="tag tag-hyp">hypothesis</span></p>
+          <p>When an LLM agent runs a shell or file tool, the action ends up as ordinary processes and syscalls. So the runtime telemetry from this lab should also catch some agent tool abuse, even when the prompt-level attack goes unnoticed. This is untested. Lab 03 below is designed to test it.</p>
+        </aside>
+
+        <div class="cta-row">
+          <a class="btn" data-field="projectRepo" target="_blank" rel="noopener noreferrer" hidden>View repository</a>
+        </div>
       </article>
     </section>
 
-    <!-- EDUCATION & CERTIFICATIONS -->
-    <section id="skill-tree" class="section" aria-labelledby="tree-title">
+    <!-- AI SECURITY TRACK -->
+    <section id="ai-track" class="section" aria-labelledby="ai-title">
       <div class="section-head">
-        <p class="eyebrow">Academic skill tree</p>
-        <h2 id="tree-title">Education</h2>
-        <p class="section-sub"><strong>FPT University</strong> · Information Security · relevant courses marked <em>Passed</em> in my academic record.</p>
+        <p class="eyebrow">$ cat ~/research/ai-security/PLAN.md</p>
+        <h2 id="ai-title">AI security research plan</h2>
+        <p class="section-sub">Planned, not done. Each lab has its research question and success criteria written <em>before</em> any testing, so the results cannot be framed after the fact.</p>
       </div>
 
-      <div class="tree">
-        <div class="branch panel">
-          <h3 class="panel-title">Security &amp; assurance</h3>
-          <ul class="nodes">
+      <figure class="card threat">
+        <figcaption>
+          <h3>Threat model: where untrusted text crosses into an LLM app</h3>
+          <p>Dashed lines are trust boundaries. The model cannot reliably tell instructions from data, so every arrow into the context window is an injection path, and every arrow out to a tool is a place where damage happens.</p>
+        </figcaption>
+        <svg class="diagram" viewBox="0 0 720 300" role="img" aria-labelledby="tm-title tm-desc">
+          <title id="tm-title">LLM application threat model</title>
+          <desc id="tm-desc">A user prompt and retrieved documents both flow into the LLM context. The LLM decides on tool calls such as shell, HTTP and file access. Trust boundaries separate the user, external documents, the model context and the tools.</desc>
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="d-head"/></marker>
+          </defs>
+          <rect class="d-zone" x="8" y="20" width="170" height="260" rx="6"/>
+          <text class="d-zone-label" x="20" y="42">untrusted input</text>
+          <rect class="d-zone" x="250" y="20" width="220" height="260" rx="6"/>
+          <text class="d-zone-label" x="262" y="42">model context</text>
+          <rect class="d-zone d-zone-hot" x="542" y="20" width="170" height="260" rx="6"/>
+          <text class="d-zone-label" x="554" y="42">side effects</text>
+
+          <rect class="d-box" x="28" y="70" width="130" height="50" rx="4"/>
+          <text class="d-text" x="93" y="100" text-anchor="middle">user prompt</text>
+          <rect class="d-box" x="28" y="180" width="130" height="50" rx="4"/>
+          <text class="d-text" x="93" y="203" text-anchor="middle">retrieved docs</text>
+          <text class="d-small" x="93" y="220" text-anchor="middle">web · RAG · email</text>
+
+          <rect class="d-box d-box-core" x="275" y="105" width="170" height="90" rx="4"/>
+          <text class="d-text" x="360" y="142" text-anchor="middle">LLM</text>
+          <text class="d-small" x="360" y="162" text-anchor="middle">system prompt</text>
+          <text class="d-small" x="360" y="178" text-anchor="middle">+ context window</text>
+
+          <rect class="d-box" x="562" y="60" width="130" height="44" rx="4"/>
+          <text class="d-text" x="627" y="87" text-anchor="middle">shell / exec</text>
+          <rect class="d-box" x="562" y="128" width="130" height="44" rx="4"/>
+          <text class="d-text" x="627" y="155" text-anchor="middle">HTTP / email</text>
+          <rect class="d-box" x="562" y="196" width="130" height="44" rx="4"/>
+          <text class="d-text" x="627" y="223" text-anchor="middle">files / DB</text>
+
+          <path class="d-line" d="M158,95 C210,95 225,135 273,140" marker-end="url(#arrow)"/>
+          <path class="d-line d-line-risk" d="M158,205 C210,205 225,165 273,160" marker-end="url(#arrow)"/>
+          <text class="d-small d-risk" x="360" y="232" text-anchor="middle">← indirect injection</text>
+          <path class="d-line d-line-risk" d="M445,140 C500,140 510,82 560,82" marker-end="url(#arrow)"/>
+          <path class="d-line d-line-risk" d="M445,150 L560,150" marker-end="url(#arrow)"/>
+          <path class="d-line d-line-risk" d="M445,160 C500,160 510,218 560,218" marker-end="url(#arrow)"/>
+          <text class="d-small d-risk" x="627" y="266" text-anchor="middle">excessive agency</text>
+        </svg>
+      </figure>
+
+      <ol class="labs">
+        <li class="card lab">
+          <header class="card-head"><h3><span class="step">01</span> Prompt-injection harness for a local LLM app</h3><span class="tag tag-planned">planned</span></header>
+          <dl class="spec">
+            <div><dt>Question</dt><dd>Which classes of direct injection get past a defense that relies only on the system prompt, and how consistently?</dd></div>
+            <div><dt>Setup</dt><dd>Local model served in an isolated Docker network; model version, temperature and seed recorded; a small target app with a secret in its system prompt.</dd></div>
+            <div><dt>Metric</dt><dd>Attack success rate per payload class over N repetitions, against a success criterion fixed in advance; benign prompts to measure filter false positives.</dd></div>
+            <div><dt>Maps to</dt><dd>OWASP LLM01 Prompt Injection, LLM07 System Prompt Leakage · ATLAS AML.T0051</dd></div>
+          </dl>
+        </li>
+        <li class="card lab">
+          <header class="card-head"><h3><span class="step">02</span> Indirect injection through a RAG pipeline</h3><span class="tag tag-planned">planned</span></header>
+          <dl class="spec">
+            <div><dt>Question</dt><dd>How often does a poisoned document get retrieved, and once retrieved, how often does the model follow it? Do delimiting and provenance tags lower either rate?</dd></div>
+            <div><dt>Setup</dt><dd>Local RAG stack with a fixed corpus plus a small set of poisoned documents; the same queries run with and without each mitigation.</dd></div>
+            <div><dt>Metric</dt><dd>Retrieval rate × execution rate, reported separately so the weaker stage is visible.</dd></div>
+            <div><dt>Maps to</dt><dd>OWASP LLM01, LLM08 Vector &amp; Embedding Weaknesses · ATLAS AML.T0051.001</dd></div>
+          </dl>
+        </li>
+        <li class="card lab">
+          <header class="card-head"><h3><span class="step">03</span> Agent tool abuse vs. runtime detection</h3><span class="tag tag-planned">planned</span></header>
+          <dl class="spec">
+            <div><dt>Question</dt><dd>When injected text makes an agent misuse its shell or file tools, can Falco/auditd plus tool-call logs detect it, and at what false-positive cost on normal agent tasks?</dd></div>
+            <div><dt>Setup</dt><dd>Local agent with sandboxed tools in a container with no egress; injection delivered through a document the agent reads; detection rules written and frozen before the attack variants.</dd></div>
+            <div><dt>Metric</dt><dd>Detection and attribution per case (direct / misattributed / missed / blocked), FP on benign agent tasks. The same method as the Falco lab.</dd></div>
+            <div><dt>Maps to</dt><dd>OWASP LLM06 Excessive Agency · tests the hypothesis in the Falco lab</dd></div>
+          </dl>
+        </li>
+      </ol>
+      <p class="footnote">References: <a href="https://genai.owasp.org/llm-top-10/" target="_blank" rel="noopener noreferrer">OWASP Top 10 for LLM Applications 2025</a> · <a href="https://atlas.mitre.org/" target="_blank" rel="noopener noreferrer">MITRE ATLAS</a>. Results will appear here only with raw evidence and stated limits.</p>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section" aria-labelledby="edu-title">
+      <div class="section-head">
+        <p class="eyebrow">$ cat ~/education.txt</p>
+        <h2 id="edu-title">Education</h2>
+        <p class="section-sub"><strong>FPT University</strong> · B.Eng. Information Security (in progress) · relevant courses marked <em>Passed</em> in my academic record.</p>
+      </div>
+      <div class="grid edu">
+        <div class="card">
+          <h3>Security &amp; assurance</h3>
+          <ul class="items">
             <li>Information Assurance</li>
             <li>Applied Cryptography</li>
             <li>Risk Management in Information Systems</li>
@@ -350,69 +362,56 @@ cyber-world:~$ explore<span class="cursor">_</span></pre></div>
             <li>Ethical Hacking &amp; Offensive Security</li>
           </ul>
         </div>
-        <div class="branch panel">
-          <h3 class="panel-title">Forensics &amp; malware</h3>
-          <ul class="nodes">
+        <div class="card">
+          <h3>Forensics &amp; malware</h3>
+          <ul class="items">
             <li>Digital Forensics</li>
             <li>Network Forensics</li>
             <li>Malware Analysis &amp; Reverse Engineering</li>
           </ul>
         </div>
-        <div class="branch panel">
-          <h3 class="panel-title">Systems &amp; networks</h3>
-          <ul class="nodes">
-            <li class="hands">Operating Systems <span class="chip chip-hands">Lab</span></li>
-            <li class="hands">Computer Networking <span class="chip chip-hands">Lab</span></li>
+        <div class="card">
+          <h3>Systems &amp; networks</h3>
+          <ul class="items">
+            <li>Operating Systems <span class="tag tag-verified">used in lab</span></li>
+            <li>Computer Networking <span class="tag tag-verified">used in lab</span></li>
           </ul>
         </div>
       </div>
-      <p class="footnote">Passing a course is not the same as professional proficiency. "Lab" marks courses whose content I applied in the lab above (syscalls, isolated container networking).</p>
+      <p class="footnote">Passing a course is not the same as professional proficiency.</p>
 
-      <div class="certs panel" data-certs hidden>
-        <h3 class="panel-title">Certifications</h3>
-        <ul class="nodes" data-cert-list></ul>
-        <p class="slot-note">Listed only with a verification link from the issuer.</p>
+      <div class="card certs" data-certs hidden>
+        <h3>Certifications</h3>
+        <ul class="items" data-cert-list></ul>
+        <p class="note">Listed only with a verification link from the issuer.</p>
       </div>
-    </section>
-
-    <!-- NEXT STEPS -->
-    <section id="roadmap" class="section" aria-labelledby="road-title">
-      <div class="section-head">
-        <p class="eyebrow">Learning roadmap</p>
-        <h2 id="road-title">Next Steps</h2>
-        <p class="section-sub">Planned work, not completed.</p>
-      </div>
-      <ol class="roadmap">
-        <li class="panel"><span class="chip chip-next">Planned</span><p>Linux IAM lab: users, groups and role-based sudo rules; test allowed vs. denied actions and document least-privilege results.</p></li>
-        <li class="panel"><span class="chip chip-next">Planned</span><p>Account auditing: auditd watches on identity files (<span class="mono">/etc/passwd</span>, <span class="mono">/etc/shadow</span>, <span class="mono">/etc/sudoers</span>) and a review of account and privilege changes.</p></li>
-        <li class="panel"><span class="chip chip-next">Planned</span><p>Hands-on with a directory or cloud IAM platform, then a verified certification.</p></li>
-      </ol>
     </section>
 
     <!-- CONTACT -->
     <section id="contact" class="section" aria-labelledby="contact-title">
-      <div class="contact panel">
-        <p class="eyebrow">Start a conversation</p>
+      <div class="card contact">
+        <p class="eyebrow">$ ./contact.sh</p>
         <h2 id="contact-title">Contact</h2>
-        <p>Open to internship and entry-level roles in technology consulting, cybersecurity engineering and IAM. Happy to walk through the lab and its evidence.</p>
+        <p>Open to internships in AI security, security engineering and detection engineering. Happy to walk through the lab and its raw evidence.</p>
         <ul class="contact-links">
-          <li><a class="btn" data-field="email" hidden>Email</a></li>
+          <li><a class="btn btn-primary" data-field="email" hidden>Email</a></li>
           <li><a class="btn" data-field="linkedin" target="_blank" rel="noopener noreferrer" hidden>LinkedIn</a></li>
           <li><a class="btn" data-field="github" target="_blank" rel="noopener noreferrer" hidden>GitHub</a></li>
-          <li><a class="btn" data-field="cv" target="_blank" rel="noopener noreferrer" hidden>Download CV</a></li>
-          <li><a class="btn" data-field="facebook" href="https://www.facebook.com/ntming24/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
-          <li><a class="btn" data-field="instagram" href="https://www.instagram.com/tnmingis/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a class="btn" data-field="cv" target="_blank" rel="noopener noreferrer" hidden>CV (PDF)</a></li>
+        </ul>
+        <ul class="contact-links contact-social">
+          <li><a class="link" data-field="facebook" target="_blank" rel="noopener noreferrer" hidden>Facebook</a></li>
+          <li><a class="link" data-field="instagram" target="_blank" rel="noopener noreferrer" hidden>Instagram</a></li>
         </ul>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <p>Cute on the surface, serious about engineering underneath. <span class="mono">Static site · no trackers · no cookies</span></p>
+    <p><span class="ps1">$</span> static site · no trackers · no cookies · CSP <code>default-src 'none'</code></p>
   </footer>
 
   <script src="js/config.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/intro.js"></script>
 </body>
 </html>
