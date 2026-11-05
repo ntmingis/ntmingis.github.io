@@ -126,14 +126,17 @@ for theme, t in (("dark", dark), ("light", light)):
     if worst[0] < 4.5:
         fails.append(f"contrast {theme}: {worst[1]} on {worst[2]} = {worst[0]:.2f}:1 < 4.5")
     print(f"contrast {theme}: worst {worst[1]} on {worst[2]} = {worst[0]:.2f}:1")
-# terminal window is always dark
-for fg in ("#cfe8d6", "#7d978a", "#45c486", "#f2b950", "#ff7a85", "#67c8e6"):
-    if ratio(fg, "#070908") < 4.5:
-        fails.append(f"terminal contrast {fg} < 4.5")
 # hero is always dark (#050505) whatever the page theme
-for fg in ("#ece7e1", "#b3ada6", "#e5596b", "#f5f0ea", "#45c486", "#8d8a85"):
+for fg in ("#ece7e1", "#a8a29b", "#e5596b", "#f5f0ea", "#7fd7a6"):
     if ratio(fg, "#050505") < 4.5:
         fails.append(f"hero contrast {fg} < 4.5")
+# the cat's terminal screen (#030504) and its status bar (#0d1411)
+for fg in ("#9fdcb8", "#e3fbee", "#ff8f9a", "#2fbf79", "#6f9a83"):
+    if ratio(fg, "#030504") < 4.5:
+        fails.append(f"terminal contrast {fg} < 4.5")
+for fg in ("#9fb8aa", "#a6ffd0", "#87928c", "#cfe8d6"):
+    if ratio(fg, "#0d1411") < 4.5:
+        fails.append(f"status bar contrast {fg} < 4.5")
 # light tokens must also be duplicated identically in the prefers-color-scheme block
 media = re.search(r'@media \(prefers-color-scheme: light\)\s*\{\s*:root:not\(\[data-theme="dark"\]\)\s*\{([^}]*)\}', css)
 if not media or dict(re.findall(r"--([\w-]+):\s*(#[0-9a-fA-F]{6})", media.group(1))) != block(':root[data-theme="light"]'):

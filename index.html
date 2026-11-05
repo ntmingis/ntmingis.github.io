@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; media-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Nguyễn Tuấn Minh · Security Student → AI Security</title>
   <meta name="description" content="Nguyễn Tuấn Minh, Information Security student at FPT University building toward AI security and cyber risk: a measured case study on runtime detection in containers and a research plan for LLM, RAG and agent security.">
@@ -44,14 +44,10 @@
   </header>
 
   <main id="main">
-    <!-- HERO: animated knight scene (js/scene/*) with the name and role on top -->
-    <section id="top" class="hero" aria-labelledby="hero-name">
-      <div class="hero-scene" data-scene role="img" aria-label="Animated scene: a dark knight in a crimson cloak walks out of a dark world of falling green digits, draws and swings a glowing sword, sheathes it, then sits to rest beside a small campfire.">
-        <canvas></canvas>
-      </div>
+    <!-- HERO: a black cat drawn by the code rain lives in a terminal (js/hero.js) -->
+    <section id="top" class="hero" data-hero aria-labelledby="hero-name">
       <div class="hero-inner">
-        <div class="hero-text" data-hero-text>
-          <p class="eyebrow">Information Security · FPT University · Year 3</p>
+        <div class="hero-copy">
           <h1 id="hero-name" class="hero-name" data-field="name" lang="vi">Nguyễn Tuấn Minh</h1>
           <p class="hero-role">Security student building toward <strong>AI Security</strong> and cyber risk</p>
           <p class="hero-tagline">I test whether security controls actually work, measure the gaps, and report the limits honestly.</p>
@@ -61,17 +57,45 @@
             <a class="btn btn-ghost" href="#contact">Contact</a>
           </div>
         </div>
+
+        <figure class="device" id="device">
+          <div class="bezel">
+            <div class="titlebar" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="title">minh@cyberworld: ~/cat — zsh — 80×24</span></div>
+            <div class="screen" id="screen">
+              <canvas aria-hidden="true"></canvas>
+              <form class="prompt" id="term" autocomplete="off">
+                <label for="cmd" class="ps1">minh@cyberworld:~$</label>
+                <input id="cmd" name="cmd" type="text" spellcheck="false" autocapitalize="off" maxlength="40" placeholder="type help" aria-describedby="cmd-help">
+              </form>
+              <ol class="out" id="out" aria-live="polite"></ol>
+              <p id="cmd-help" class="visually-hidden">Commands: help, whoami, study, stop, sleep, wake, auto, schedule, pounce, clear.</p>
+            </div>
+            <div class="status" aria-hidden="true">
+              <span class="seg-a">[0] cat</span>
+              <span class="seg-b">state: <span id="state">idle</span></span>
+              <span class="grow"></span>
+              <span class="right"><span class="gl"><span id="glyphs">0</span> glyphs · </span><span class="clk"><span id="clock">--:--</span> GMT+7</span></span>
+            </div>
+          </div>
+          <figcaption class="visually-hidden">A black cat drawn by falling green code sits inside a terminal window. It studies from noon to 10 pm and sleeps at night, Vietnam time.</figcaption>
+          <div class="hero-controls">
+            <div class="seg" role="group" aria-label="Cat schedule">
+              <button type="button" id="s-auto" aria-pressed="true">Auto</button>
+              <button type="button" id="s-awake" aria-pressed="false">Awake</button>
+              <button type="button" id="s-study" aria-pressed="false">Study</button>
+              <button type="button" id="s-sleep" aria-pressed="false">Sleep</button>
+            </div>
+            <button type="button" class="pause" id="pause" aria-pressed="false">Pause</button>
+          </div>
+        </figure>
       </div>
-      <div class="scene-ui">
-        <p class="scene-state" aria-hidden="true"><span class="dim">knight.state =</span> <span data-scene-state>arrival</span></p>
-        <button type="button" class="scene-toggle" data-scene-toggle aria-pressed="false" hidden>Pause scene</button>
-      </div>
+      <div class="laser" aria-hidden="true"></div>
     </section>
 
     <!-- AT A GLANCE: the one-minute read for recruiters -->
     <section id="summary" class="section" aria-labelledby="summary-title">
       <div class="section-head">
-        <p class="eyebrow">At a glance · one-minute read</p>
+        <p class="eyebrow">~/summary · one-minute read</p>
         <h2 id="summary-title">What I bring to a security team</h2>
       </div>
       <div class="grid glance">
@@ -100,35 +124,45 @@
       </ul>
     </section>
 
-    <!-- CASE STUDY: written for a consulting reader (question → answer → so what) -->
+    <!-- CASE STUDY: what I did, the tools, what came out of it -->
     <section id="projects" class="section" aria-labelledby="projects-title">
       <div class="section-head">
-        <p class="eyebrow">Case study</p>
-        <h2 id="projects-title">Does runtime monitoring actually catch fileless attacks in containers?</h2>
-        <p class="section-sub">IAM302 course research lab, FPT University · <span class="tag tag-verified">completed</span></p>
+        <p class="eyebrow">~/projects</p>
+        <h2 id="projects-title">Case study</h2>
+        <p class="section-sub">University research lab, FPT University · <span class="tag tag-verified">completed</span></p>
       </div>
 
       <article class="card project" aria-labelledby="lab-title">
         <header class="project-head">
-          <p class="meta">Falco + auditd · Docker · Linux</p>
-          <h3 id="lab-title">Falco + auditd: detecting fileless execution in Docker</h3>
+          <h3 id="lab-title">Detecting fileless attacks in Docker containers with Falco and auditd</h3>
+          <p class="lead">Fileless attacks run code without leaving a normal program file on disk, which makes them hard to spot. I built a safe lab to measure how many of them a container security monitor actually catches.</p>
         </header>
 
-        <div class="exec" role="list">
-          <div class="exec-item" role="listitem">
-            <p class="exec-label">Question</p>
-            <p>Can a container runtime monitor see <strong>fileless</strong> attacks, meaning code that runs without a normal file on disk, and does each alert name the right technique?</p>
+        <div class="split split-wide">
+          <div>
+            <h4 class="sub-h">What I did</h4>
+            <ul class="items">
+              <li>Built an isolated lab: Ubuntu VM, Docker containers on an internal network, Internet access blocked and tested.</li>
+              <li>Simulated 11 fileless techniques (memory-only programs, <code>/dev/shm</code>, <code>curl | bash</code>, <code>LD_PRELOAD</code>, <code>ptrace</code> …) with harmless payloads, 5 runs each.</li>
+              <li>Wrote 6 custom Falco detection rules and compared them with Falco's 25 default rules and with auditd logs.</li>
+              <li>Tested 7 new attack variants written after the rules were frozen, plus normal workloads to find false alarms.</li>
+              <li>Automated the scoring with Python, so every run is labelled the same way: detected, wrongly named, missed or blocked.</li>
+            </ul>
           </div>
-          <div class="exec-item" role="listitem">
-            <p class="exec-label">Answer</p>
-            <p>Out of the box, Falco caught <strong>4 of 11</strong> cases directly. With my 6 custom rules: <strong>8 of 11</strong>, but I also found 2 false-positive sources. auditd recorded every successful payload in the baseline run, as raw telemetry rather than alerts.</p>
-          </div>
-          <div class="exec-item" role="listitem">
-            <p class="exec-label">So what <span class="tag tag-hyp">inference</span></p>
-            <p>In this lab, default rules left most techniques undetected, and tuning closed half the gap while adding alert noise. A detection control should be tested against both attacks and normal workloads before it is counted as a control.</p>
+          <div>
+            <h4 class="sub-h">Tools I used</h4>
+            <ul class="toolgrid">
+              <li><b>Falco 0.45</b><span>Runtime security monitor for containers (modern eBPF). Default rules + my 6 custom rules.</span></li>
+              <li><b>auditd</b><span>Linux audit log. An independent record of what really ran.</span></li>
+              <li><b>Docker</b><span>Isolated test targets that reset in seconds.</span></li>
+              <li><b>Ubuntu 22.04 VM</b><span>Lab host with a kernel that supports Falco's eBPF driver.</span></li>
+              <li><b>Bash</b><span>Test harness: 11 cases × 5 runs with the same settings.</span></li>
+              <li><b>Python</b><span>Parsers for Falco and audit logs; automatic scoring.</span></li>
+            </ul>
           </div>
         </div>
 
+        <h4 class="sub-h">Results</h4>
         <div class="results" role="list">
           <div class="result" role="listitem">
             <p class="result-id">E1 · detection</p>
@@ -153,64 +187,15 @@
         </div>
 
 
-        <h4 class="sub-h">Tools, and why each one</h4>
-        <div class="table-wrap">
-          <table class="tools">
-            <thead><tr><th scope="col">Tool</th><th scope="col">What it did in this lab</th><th scope="col">Why this tool</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">Falco 0.45 <span class="muted">modern eBPF driver</span></th><td>Real-time alerts on suspicious process behaviour inside containers: 25 default rules, then 6 of mine.</td><td>Open-source runtime security for containers and a CNCF graduated project (2024). It reads syscalls through eBPF without modifying the containers, and its rules are readable YAML, so detection logic can be versioned and reviewed like code.</td></tr>
-              <tr><th scope="row">auditd</th><td>A second, independent record of <code>execve</code>, <code>execveat</code>, <code>memfd_create</code> and <code>ptrace</code>.</td><td>Built into the Linux kernel's audit system. It keeps the login user (<code>auid</code>) even after <code>sudo</code>, which gives accountability, and it lets me separate "the detector missed it" from "it never ran".</td></tr>
-              <tr><th scope="row">Docker, internal network</th><td>Isolated targets for the attack simulations.</td><td>Repeatable environments that are cheap to reset. Egress was blocked <em>and tested</em>, so test payloads could not reach the Internet.</td></tr>
-              <tr><th scope="row">Ubuntu 22.04 VM</th><td>Host for the whole lab.</td><td>Its 5.15 kernel exposes BTF, which Falco's modern eBPF driver needs (the Falco docs say kernels ≥ 5.8 usually work), and VM snapshots keep runs comparable.</td></tr>
-              <tr><th scope="row">Bash harness</th><td>Ran 11 cases × 5 repetitions with frozen rules.</td><td>Same steps every run; configuration hashes recorded per run so results can be compared and reproduced.</td></tr>
-              <tr><th scope="row">Python parsers</th><td>Turned Falco JSON and audit logs into one label per case: direct, misattributed, missed or blocked.</td><td>Scoring as code removes manual counting errors and can be re-run on new data.</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h4 class="sub-h">Techniques tested, mapped to MITRE ATT&amp;CK</h4>
-        <ul class="attack">
-          <li><span>Running code from memory (<code>memfd_create</code>, <code>/proc/self/fd</code>)</span><a href="https://attack.mitre.org/techniques/T1620/" target="_blank" rel="noopener noreferrer">T1620 Reflective Code Loading</a></li>
-          <li><span>Interpreter inline code (<code>python3 -c</code>, <code>curl | bash</code>)</span><span class="ids"><a href="https://attack.mitre.org/techniques/T1059/006/" target="_blank" rel="noopener noreferrer">T1059.006 Python</a> · <a href="https://attack.mitre.org/techniques/T1059/004/" target="_blank" rel="noopener noreferrer">T1059.004 Unix Shell</a></span></li>
-          <li><span>Library injection via <code>LD_PRELOAD</code></span><a href="https://attack.mitre.org/techniques/T1574/006/" target="_blank" rel="noopener noreferrer">T1574.006 Dynamic Linker Hijacking</a></li>
-          <li><span>Process injection via <code>ptrace</code></span><a href="https://attack.mitre.org/techniques/T1055/008/" target="_blank" rel="noopener noreferrer">T1055.008 Ptrace System Calls</a></li>
-        </ul>
-
-        <h4 class="sub-h">What the research shows</h4>
-        <p class="note">Findings are measured. Implications are my inferences from one lab environment, not general measurements.</p>
-        <ol class="findings">
-          <li><div><p class="f-label">Finding</p><p>Default rules directly detected 4 of the 11 cases.</p></div><div><p class="f-label">Implication</p><p>"Installed" is not "effective". A detection tool should be tested against the techniques it is meant to cover before it is reported as a working control.</p></div></li>
-          <li><div><p class="f-label">Finding</p><p>Custom rules raised coverage to 8 of 11, but my inline-code rule also fired on normal <code>python3 -c</code> use.</p></div><div><p class="f-label">Implication</p><p>Coverage and alert noise trade off. Every rule change needs a false-positive test on normal workloads, the same way code needs regression tests.</p></div></li>
-          <li><div><p class="f-label">Finding</p><p>Renaming the process (<code>exec -a</code>) or feeding code through stdin still evaded both rule sets.</p></div><div><p class="f-label">Implication</p><p>Rules keyed on process names or arguments are brittle. Signals based on behaviour at the syscall level held up better here, which matches auditd recording every successful payload.</p></div></li>
-          <li><div><p class="f-label">Finding</p><p>One case was blocked by Docker's <code>noexec</code> <code>/dev/shm</code>, not missed. auditd logged <code>auid=minh uid=root</code> for sudo actions.</p></div><div><p class="f-label">Implication</p><p>Reports must separate prevented, detected and missed. Hardening settings and accountability logging are controls in their own right and should be credited as such.</p></div></li>
-        </ol>
-
-        <div class="split">
-          <div>
-            <h4 class="sub-h">Limits</h4>
-            <ul class="items">
-              <li>Small samples, one VM, one kernel.</li>
-              <li>I wrote both the variants and the rules, so the "unseen" test is not blind.</li>
-              <li>The overhead result is inconclusive at n=5, not "zero overhead".</li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="sub-h">What I would do next</h4>
-            <ul class="items">
-              <li>Re-run with a blind variant set written by someone else.</li>
-              <li>Repeat on more hosts and kernels; measure overhead with a larger sample.</li>
-              <li>Publish the rules with an ATT&amp;CK coverage matrix and their FP tests.</li>
-            </ul>
-          </div>
-        </div>
-
-        <p class="sub-h">Skills this shows</p>
-        <ul class="chips chips-strong" aria-label="Skills demonstrated">
-          <li>Control effectiveness testing</li><li>Threat-informed defence (ATT&amp;CK)</li><li>Reproducible evidence</li><li>Risk-based reporting</li><li>Linux &amp; container security</li>
+        <h4 class="sub-h">What I took away</h4>
+        <ul class="items takeaways">
+          <li>Out of the box, Falco caught 4 of 11 cases. My rules raised that to 8 of 11 but added false alarms, so every new rule needs testing on normal work too.</li>
+          <li>Renaming a process or feeding code through stdin still slipped past both rule sets: rules based on names are easy to bypass.</li>
+          <li>"Blocked" is not "missed": one attack was stopped by a Docker hardening setting before it could run, and the report says so.</li>
         </ul>
 
         <details class="case">
-          <summary>Full method and raw results: objective → setup → tests → results → takeaways → limits</summary>
+          <summary>Full method, results, ATT&amp;CK mapping and limits</summary>
           <div class="case-grid">
             <section>
               <h4><span class="step">01</span> Objective</h4>
@@ -249,7 +234,6 @@
                 <li><strong>Blocked ≠ missed:</strong> check exit codes and audit records before blaming the detector.</li>
                 <li>Rule ordering matters: a default rule can shadow a custom one and turn a detection into a misattribution.</li>
                 <li>Rules matching on process name or argv are easy to evade; every new rule needs a benign-workload FP test.</li>
-                <li>Accountability survived privilege elevation: auditd logged <code>auid=minh uid=root</code> for sudo actions.</li>
               </ul>
             </section>
             <section>
@@ -260,6 +244,15 @@
                 <li>Overhead result is inconclusive, not "zero overhead".</li>
               </ul>
             </section>
+          </div>
+          <div class="case-extra">
+            <h4>Techniques tested, mapped to MITRE ATT&amp;CK</h4>
+            <ul class="attack">
+          <li><span>Running code from memory (<code>memfd_create</code>, <code>/proc/self/fd</code>)</span><a href="https://attack.mitre.org/techniques/T1620/" target="_blank" rel="noopener noreferrer">T1620 Reflective Code Loading</a></li>
+          <li><span>Interpreter inline code (<code>python3 -c</code>, <code>curl | bash</code>)</span><span class="ids"><a href="https://attack.mitre.org/techniques/T1059/006/" target="_blank" rel="noopener noreferrer">T1059.006 Python</a> · <a href="https://attack.mitre.org/techniques/T1059/004/" target="_blank" rel="noopener noreferrer">T1059.004 Unix Shell</a></span></li>
+          <li><span>Library injection via <code>LD_PRELOAD</code></span><a href="https://attack.mitre.org/techniques/T1574/006/" target="_blank" rel="noopener noreferrer">T1574.006 Dynamic Linker Hijacking</a></li>
+          <li><span>Process injection via <code>ptrace</code></span><a href="https://attack.mitre.org/techniques/T1055/008/" target="_blank" rel="noopener noreferrer">T1055.008 Ptrace System Calls</a></li>
+        </ul>
           </div>
         </details>
 
@@ -277,7 +270,7 @@
     <!-- TRACKS -->
     <section id="tracks" class="section" aria-labelledby="tracks-title">
       <div class="section-head">
-        <p class="eyebrow">Skills, tagged by evidence</p>
+        <p class="eyebrow">~/skills</p>
         <h2 id="tracks-title">Skills</h2>
         <p class="section-sub">Each item says how I know it. Only <span class="tag tag-verified">verified</span> means a documented lab with results.</p>
         <ul class="legend" aria-label="Legend">
@@ -314,7 +307,7 @@
             <li>Ubuntu 22.04, systemd, journald</li>
             <li>Syscalls: execve, memfd_create, ptrace</li>
             <li>Docker internal networks, egress tested</li>
-            <li>Least privilege, audit attribution (auid)</li>
+            <li>Least privilege, sudo and audit logging</li>
           </ul>
         </article>
         <article class="card">
@@ -355,7 +348,7 @@
     <!-- AI SECURITY TRACK -->
     <section id="ai-track" class="section" aria-labelledby="ai-title">
       <div class="section-head">
-        <p class="eyebrow">Next: AI security</p>
+        <p class="eyebrow">~/next/ai-security</p>
         <h2 id="ai-title">AI security research plan</h2>
         <p class="section-sub">Planned, not done. Each lab has its research question and success criteria written <em>before</em> any testing, so the results cannot be framed after the fact.</p>
       </div>
@@ -446,7 +439,7 @@
     <!-- EDUCATION -->
     <section id="education" class="section" aria-labelledby="edu-title">
       <div class="section-head">
-        <p class="eyebrow">Education</p>
+        <p class="eyebrow">~/education</p>
         <h2 id="edu-title">Education</h2>
         <p class="section-sub"><strong>FPT University</strong> · B.Eng. Information Security (in progress) · relevant courses marked <em>Passed</em> in my academic record.</p>
       </div>
@@ -487,45 +480,22 @@
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="section about" aria-labelledby="about-title">
-      <div class="about-text">
-        <p class="eyebrow">About</p>
+    <section id="about" class="section" aria-labelledby="about-title">
+      <div class="section-head">
+        <p class="eyebrow">~/about</p>
         <h2 id="about-title">About</h2>
-        <p>I learn by building isolated labs, measuring what tools actually detect, and publishing the false positives and limits along with the wins.</p>
-        <p>Current evidence: one completed, measured runtime-detection lab. AI security is my direction; its labs are planned and listed below with their success criteria, not results.</p>
-        <p class="hero-hello" lang="vi">Chào bạn, mình là Minh.</p>
       </div>
-
-      <div class="term" data-term>
-        <div class="term-bar" aria-hidden="true">
-          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-          <span class="term-title">minh@cyberworld: ~</span>
-        </div>
-        <div class="term-body" data-term-body>
-          <div class="term-out" data-term-out aria-live="polite">
-<p><span class="ps1">minh@cyberworld:~$</span> whoami</p>
-<p><span lang="vi">Nguyễn Tuấn Minh</span>, Information Security student</p>
-<p><span class="ps1">minh@cyberworld:~$</span> cat focus.txt</p>
-<p>AI security: LLM, RAG and agent red teaming</p>
-<p>+ runtime detection engineering</p>
-<p><span class="ps1">minh@cyberworld:~$</span> cat status.txt</p>
-<p><span class="ok">[verified]</span> 1 detection lab, measured (Falco + auditd)</p>
-<p><span class="warn">[learning]</span> AI security, labs planned, no results claimed</p>
-<p class="term-hint">Type <kbd>help</kbd> for commands.</p>
-          </div>
-          <form class="term-in" data-term-form autocomplete="off" hidden>
-            <label for="term-input" class="ps1">minh@cyberworld:~$</label>
-            <input id="term-input" name="cmd" type="text" spellcheck="false" autocapitalize="off" aria-describedby="term-help" maxlength="40">
-          </form>
-          <p id="term-help" class="visually-hidden">Commands: help, whoami, about, projects, ai, education, contact, clear, theme.</p>
-        </div>
+      <div class="about-text">
+        <p>I learn by building isolated labs, measuring what tools actually detect, and publishing the false positives and limits along with the wins.</p>
+        <p>Current evidence: one completed, measured runtime-detection lab. AI security is my direction; its labs are planned and listed above with their success criteria, not results.</p>
+        <p class="hello" lang="vi">Chào bạn, mình là Minh.</p>
       </div>
     </section>
 
     <!-- CONTACT -->
     <section id="contact" class="section" aria-labelledby="contact-title">
       <div class="card contact">
-        <p class="eyebrow">Contact</p>
+        <p class="eyebrow">~/contact</p>
         <h2 id="contact-title">Contact</h2>
         <p>Open to internships in cyber security consulting and technology risk, including Big4, with a focus on AI security; also security engineering and detection engineering. Happy to walk through the lab and its raw evidence.</p>
         <ul class="contact-links">
@@ -548,6 +518,6 @@
 
   <script src="js/config.js"></script>
   <script src="js/main.js"></script>
-  <script type="module" src="js/scene/scene.js"></script>
+  <script src="js/hero.js"></script>
 </body>
 </html>

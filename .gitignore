@@ -19,5 +19,3 @@ node_modules/
 shots/
 *.bak
 
-# raw AI video clips (large); only the processed files in assets/hero/ are published
-media-src/
